@@ -207,6 +207,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   background: linear-gradient(135deg, rgb(238, 0, 153), rgb(221, 0, 238));  
+  position:relative;
 `;
 
 const Grid = styled.div`
@@ -227,6 +228,7 @@ const Box = styled(motion.div)`
   display:flex;
   justify-content:center;
   align-items:center;
+  
 ;
 `;
 const Circle = styled(motion.div)`
@@ -251,6 +253,17 @@ const overlay = {
   visible: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
   exit: { backgroundColor: "rgba(0, 0, 0, 0)" },
 };
+const Btn = styled(motion.button)`
+  width:100px;
+  height:50px;
+  color:black;
+  font-size:30px;
+  font-weight:100px;
+  background-color:white;
+  border-radius:10px;
+  position:absolute;
+  bottom:100px;
+  `;
 
 function App() {
   const [id, setId] = useState<null | string>(null);
@@ -267,9 +280,17 @@ function App() {
           {clicked ? <Circle layoutId="circle" /> : null}
         </Box>
         <Box key="4" onClick={() => setId("4")} layoutId={"4"}  whileHover={{ scale: 1.05 }}></Box>    
-        
-        <button onClick={toggleMode} >Switch</button>
+      
       </Grid>
+      <Btn 
+        onClick={toggleMode}
+        whileHover={{
+          scale:1.1,
+          color:"#d63031"
+        }}
+      >
+           Switch
+        </Btn>
       <AnimatePresence>
         {id ? (
         <Overlay
